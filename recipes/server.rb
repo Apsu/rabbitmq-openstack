@@ -104,6 +104,7 @@ if rcb_safe_deref(node, "vips.rabbitmq-queue")
 
   keepalived_vrrp vrrp_name do
     interface vrrp_interface
+    virtual_ipaddress Array(vip)
     virtual_router_id router_id  # Needs to be a integer between 1..255
     track_script "rabbitmq"
     notify_master "/etc/keepalived/notify.sh add #{vrrp_interface} #{vip} #{src_ip}"
